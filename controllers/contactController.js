@@ -9,8 +9,14 @@ export const getContacts = async (req, res) => {
 //@dec Get all contacts
 //@route post /api/contacts/add
 //@access public
-export const createContact = (req, res) => {
-    res.status(200).json({ message: "Create Contact" })
+export const createContact = async (req, res) => {
+  console.log(`The request body is ${req.body}`);
+  const {name, email, phone} = req.body; //pbject destructuring
+  if(!name || !email || !phone){
+    res.status(400);
+    throw new Error("All fields are mandatory!!!")
+  }
+  res.status(200).json({ message: "Create Contact" });
 }
 
 export const getContact = async (req, res) => {

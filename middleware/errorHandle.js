@@ -1,38 +1,38 @@
-import { constants } from "../constants";
+import { errors } from "../errors";
 
 export const errorHandler = (err, req, res, next) => {
     const statusCode = res.statusCode ? res.statusCode: 500;
 
     switch (statusCode) {
-      case constants.VALIDATION_ERROR:
+      case errors.VALIDATION_ERROR:
         res.json({
           title: "Not Found",
           message: err.message,
           stackTrace: err.stack,
         });
         break;
-      case constants.FORBIDDEN:
+      case errors.FORBIDDEN:
         res.json({
           title: "FORBIDDEN",
           message: err.message,
           stackTrace: err.stack,
         });
         break;
-      case constants.UNAUTHORIZED:
+      case errors.UNAUTHORIZED:
         res.json({
           title: "UNAUTHORIZED",
           message: err.message,
           stackTrace: err.stack,
         });
         break;
-      case constants.NOT_FOUND:
+      case errors.NOT_FOUND:
         res.json({
           title: "NOT FOUND",
           message: err.message,
           stackTrace: err.stack,
         });
         break;
-      case constants.SERVER_ERROR:
+      case errors.SERVER_ERROR:
         res.json({
           title: "SERVER ERROR",
           message: err.message,

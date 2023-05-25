@@ -6,9 +6,13 @@ import {
   updateContact,
   deleteContact,
 } from "../controllers/contactController";
+import { validateToken } from '../middleware/validateTokenHandler';
 
 //setting up the router
 const contactRouter = express.Router();
+
+//Token Validation middleware
+contactRouter.use(validateToken);
 
 //routes
 contactRouter.get("/", getContacts);
